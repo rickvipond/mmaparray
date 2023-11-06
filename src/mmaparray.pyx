@@ -206,7 +206,7 @@ cdef class MMapBitArray(MMapArray):
         self._size = size
 
     def __setitem__(self, size_t key, value):
-        cdef size_t offset = key / 8
+        cdef size_t offset = key // 8
         cdef uint8_t mask = 2 ** (key % 8)
 
         if self._fd < 0 or not self._buffer:
